@@ -8,7 +8,6 @@ describe('working with inputs',()=>{
         cy.get('#user_login').type('username')
         cy.get('#user_password').clear()
         cy.get('#user_password').type('password')
-        // cy.get('#user_remember_me')
         cy.get('#user_remember_me').check()
     });
 });
