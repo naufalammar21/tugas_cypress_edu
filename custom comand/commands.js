@@ -8,19 +8,17 @@ Cypress.Commands.add('login', (username, password) => {
     cy.contains('Sign in').click()
 })
 
-Cypress.Commands.add('buy', (payee, account, amount, date, description) => {
+
+Cypress.Commands.add('pay', (sp_payee, sp_account, sp_amount,sp_description,sp_date,pay_saved_payees) => {
     cy.clearCookies()
     cy.clearLocalStorage()
-    cy.get('#sp_payee').select('sprint').invoke("val").should("eq","sprint")
-    cy.get('#sp_account').select('Savings').invoke("val").should("eq","Savings")
-    cy.get('#sp_amount').type(amount)
-    cy.get('#sp_date').type(amount)
-    cy.get('#sp_description').type(description)
-    cy.contains('#pay_saved_payees').click()
+    cy.get('#sp_payee').select('sprint')
+    cy.get('#sp_account').select('2')
+    cy.get('#sp_amount').type('50000')
+    cy.get('#sp_description').type('This is the Description')
+    cy.get('#sp_date').type('2022-03-09')
+    cy.get('#pay_saved_payees').click()
 })
-
-
-
 
 
 // ***********************************************
