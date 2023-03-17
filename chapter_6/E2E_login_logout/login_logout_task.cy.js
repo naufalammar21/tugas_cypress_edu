@@ -9,10 +9,9 @@ before(()=>{
 it('should try to login and logout',()=>{
     cy.login_negative()
     cy.login_positive()
-    // cy.logout()
-
-    cy.get('.icon-user').click()
-    cy.get('#logout_link').click()
-    cy.contains('Online Banking').should('be.visible')
+    cy.logout()
 
 })
+
+
+

@@ -39,17 +39,19 @@ Cypress.Commands.add('login_positive', (user_login,password,sign_in,nav_tabs) =>
         cy.get('ul.nav-tabs').should('be.visible')
     })
 
-    // Cypress.Commands.add('logout', (icon_user, logout_link) => {
-    //     cy.get('.icon-user').click()
-    //     cy.get('#logout_link').click()
-    // })
+   
 
     
 })
 
 
 
-
+Cypress.Commands.add('logout', (icon_user, logout_link,online_banking) => {
+       
+    cy.get('.icon-user').click()
+    cy.get('#logout_link').click()
+    cy.contains('Online Banking').should('be.visible')
+})
 // ***********************************************
 // This example commands.js shows you how to
 // create various custom commands and overwrite
