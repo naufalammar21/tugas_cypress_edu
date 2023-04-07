@@ -16,8 +16,12 @@ describe('API Validation Content',()=>{
             ],
        }
 
-       expect(response.body.abilities).to.eq({name:'limber'})
+       cy.request('GET','https://pokeapi.co/api/v2/ability/7/', user).then((response) => {
+        expect(response.body.name).to.eq('limber')
+       })
     });
     
     
 })
+
+
