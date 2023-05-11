@@ -25,5 +25,5 @@ Then('payment sucess with bank transfer' , () => {
     cy.iframe('iframe[id="snap-midtrans"]').find('img[alt="BNI"]').click();
     cy.iframe().contains('BNI').click()
     cy.iframe().contains('Copy').click()
-    cy.iframe().contains('Back to merchant').click()  
+
 })

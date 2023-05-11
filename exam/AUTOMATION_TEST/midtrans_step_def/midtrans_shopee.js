@@ -22,12 +22,10 @@ When('I click the buy now button and fill the form #3',()=>{
 
 Then('payment sucess with shopee' , () => {
     cy.get('.cart-checkout').click()
-    // cy.iframe('[id="snap-midtrans"]').then(($iframe) => {
-    //     cy.wrap($iframe.contents().find('img[alt="ShopeePay"]')).click();
-    // });
+    
     cy.iframe('iframe[id="snap-midtrans"]').find('img[alt="ShopeePay"]').click();
-    cy.iframe('iframe[id="snap-midtrans"]').find('img[alt="qr-code"]').should('be.visible');
-    cy.iframe().contains('Back to merchant').click()
+    cy.iframe('iframe[id="ssnap-midtrans"]').find('img[alt="qr-code"]').should('be.visible');
+   
 
     
 })

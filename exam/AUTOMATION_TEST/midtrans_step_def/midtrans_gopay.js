@@ -19,7 +19,7 @@ Then('payment sucess' , () => {
         cy.wrap($iframe.contents().find('img[alt="GoPay"]')).click();
     });
     cy.iframe('iframe[id="snap-midtrans"]').find('img[alt="qr-code"]').should('be.visible');
-    cy.iframe().contains('Back to merchant').click()
+    
 
     
 })

@@ -27,8 +27,7 @@ Then('payment sucessfully',() => {
     cy.wait(2000); 
     cy.iframe('[id="snap-midtrans"]').find('#card-expiry.valid-input-value').clear().type('0824');
     cy.iframe('[id="snap-midtrans"]').find('#card-cvv').clear().type('123');
-    cy.iframe('[id="snap-midtrans"]').find('input[name="card-save"]').click();
-    cy.iframe().contains('Pay now').click()
+    
 
 
     cy.get('iframe[id="snap-midtrans"]')

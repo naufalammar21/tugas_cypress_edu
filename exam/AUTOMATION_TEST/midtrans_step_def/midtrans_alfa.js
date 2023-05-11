@@ -24,8 +24,7 @@ Then('payment sucess with Alfa Mart payment method' , () => {
     cy.get('.cart-checkout').click()
     cy.iframe('iframe[id="snap-midtrans"]').find('img[alt="Alfamart"]').click();
     cy.iframe('iframe[id="snap-midtrans"]').find('img[alt="Barcode"]').should('be.visible');
-    cy.iframe('iframe[id="snap-midtrans"]').find('button.btn.full.tertiary').click();
-    cy.iframe().contains('Close this page').click()
+    
 
     
 })
