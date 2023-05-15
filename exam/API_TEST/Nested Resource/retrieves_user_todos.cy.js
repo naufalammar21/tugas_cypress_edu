@@ -9,15 +9,15 @@ describe('API GET', () => {
 
     cy.request({
       method: 'GET',
-      url: 'https://gorest.co.in/public/v2/users/1107/todos',
+      url: 'https://gorest.co.in/public/v2/users/1109/todos',
       headers: headers,
     }).then((response) => {
       expect(response.status).to.eq(200);
       expect(response.body).to.be.an('array').and.not.be.empty;
-      expect(response.body[0]).to.have.property('user_id', 1107);
-      expect(response.body[0]).to.have.property('title', 'Conspergo concido adhaero usus id depraedor.');
-      expect(response.body[0]).to.have.property('due_on', '2023-03-18T00:00:00.000+05:30');
-      expect(response.body[0]).to.have.property('status', 'completed');
+      expect(response.body[0]).to.have.property('user_id', 1109);
+      expect(response.body[0]).to.have.property('title', 'Task 1');
+      expect(response.body[0]).to.have.property('due_on', '2023-05-15T00:00:00.000+05:30');
+      expect(response.body[0]).to.have.property('status', 'pending');
     });
   });
 });
