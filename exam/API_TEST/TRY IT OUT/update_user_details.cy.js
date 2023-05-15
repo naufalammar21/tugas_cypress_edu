@@ -1,28 +1,29 @@
-describe('PUT Request for User Update', () => {
-  const token = 'fa5928debee83de6885741df29ce9ff452ad976a4f62c86aaf160cb7d08540d4'
+/// <reference types="cypress" />
 
-  it('should update user data with authorization', () => {
-    const updatedUser = {
-      name: 'Bang Messi', 
-      email: 'messigoat@example.com', 
-      gender: 'male', 
-      status: 'active'
-    }
+describe('API PUT', () => {
+  it('update user', () => {
+    const user = {
+      "name": "Woro Widowati singer",
+      "email": "woro_widowati990@gmail.com",
+      "gender": "female",
+      "status": "inactive"
+    };
+
+    const headers = {
+      'Authorization': 'Bearer fa5928debee83de6885741df29ce9ff452ad976a4f62c86aaf160cb7d08540d4'
+    };
 
     cy.request({
       method: 'PUT',
-      url: 'https://gorest.co.in/public/v2/users/1092',
-      headers: {
-        Authorization: `Bearer ${token}`
-      },
-      body: updatedUser
-    }).then((response) => {
-      // Display the status code
-      cy.log('Status Code:', response.status)
-
-      // Display the response body
-      cy.log('Response Body:')
-      cy.log(JSON.stringify(response.body))
-    })
-  })
-})
+      url: 'https://gorest.co.in/public/v2/users/1107',
+      headers: headers,
+      body: user
+    }).then((response) => {       
+      expect(response.status).to.eq(200);
+      expect(response.body).to.have.property('name', 'Woro Widowati singer');
+      expect(response.body).to.have.property('email', 'woro_widowati990@gmail.com');
+      expect(response.body).to.have.property('gender', 'female');
+      expect(response.body).to.have.property('status', 'inactive');
+    });
+  });
+});

@@ -1,40 +1,22 @@
-describe('GET and POST Requests with Authorization', () => {
-  const token = 'fa5928debee83de6885741df29ce9ff452ad976a4f62c86aaf160cb7d08540d4'
+/// <reference types="cypress" />
 
-  it('should get existing posts and create a new post with authorization', () => {
-    // GET request to retrieve existing posts
+describe('API GET', () => {
+  it('Retrieves user posts', () => {
+
+    const headers = {
+      'Authorization': 'Bearer fa5928debee83de6885741df29ce9ff452ad976a4f62c86aaf160cb7d08540d4'
+    };
+
     cy.request({
       method: 'GET',
-      url: 'https://gorest.co.in/public/v2/users/1092/posts',
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    }).then((getResponse) => {
-      // Display the existing posts
-      cy.log('Existing Posts:')
-      cy.log(JSON.stringify(getResponse.body))
-
-      // Create a new post
-      const newPost = {
-        title: 'My New Post',
-        body: 'This is the content of my new post.'
-      }
-
-      cy.request({
-        method: 'POST',
-        url: 'https://gorest.co.in/public/v2/users/1092/posts',
-        headers: {
-          Authorization: `Bearer ${token}`
-        },
-        body: newPost
-      }).then((postResponse) => {
-        // Display the status code
-        cy.log('Status Code:', postResponse.status)
-
-        // Display the response body
-        cy.log('Response Body:')
-        cy.log(JSON.stringify(postResponse.body))
-      })
-    })
-  })
-})
+      url: 'https://gorest.co.in/public/v2/users/1107/posts',
+      headers: headers,
+    }).then((response) => {
+      expect(response.status).to.eq(200);
+      expect(response.body).to.be.an('array').and.not.be.empty;
+      expect(response.body[0]).to.have.property('user_id', 1107);
+      expect(response.body[0]).to.have.property('title', 'New post');
+      expect(response.body[0]).to.have.property('body', 'This is a new post created via JSON request.');
+    });
+  });
+});
